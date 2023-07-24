@@ -1,0 +1,27 @@
+<h1>postulations</h1>
+
+<div id="postulations">
+  
+  <% @postulations.each do |postulation| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Last</th>
+          <th scope="col">Vacant</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= postulation.id %></th>
+          <td><%= User.find(postulation.user_id).name %></td>
+          <td><%= User.find(postulation.user_id).last_name %></td>
+          <td><%= Vacant.find(postulation.vacant_id).title %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+
+</div>
+

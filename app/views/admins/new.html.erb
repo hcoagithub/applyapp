@@ -1,0 +1,62 @@
+<h2>New User</h2>
+
+<%= form_with(model: @user, url: user_created_path, method:'post') do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "name", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last_name", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :age %><br />
+    <%= f.number_field :age, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+
+    <%= f.select(:role) do %>
+      <% [["admin"], ["normal_user"]].each do |c| -%>
+        <%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :images, "Agrega tu imagen" %>
+    <%= f.file_field :images, class: 'form-control' %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+

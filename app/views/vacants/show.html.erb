@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @vacant %>
+
+<div>
+
+<%= form_with(model: @postulation, url: postulations_path ) do |form| %>
+  <%= form.hidden_field :vacant_id %>
+  <%= form.hidden_field :user_id %>
+  <%= form.submit 'Postular', class:'btn btn-primary' %>
+
+<% end %>
+
+<%= link_to "Back to vacants", vacants_path %> 
+
+  
+
+<% if user_signed_in? %>
+  <% if current_user.id == @vacant.user_id %>
+    <%= link_to "Edit this vacant", edit_vacant_path(@vacant) %> |
+    <%= button_to "Destroy this vacant", @vacant, method: :delete %>
+  <% end %>
+<% end %>
+
+  
+</div>

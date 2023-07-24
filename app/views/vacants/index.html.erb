@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Vacants</h1>
+
+<div id="vacants">
+  <% @vacants.each do |vacant| %>
+    <%= render vacant %>
+    <p>
+      <%= link_to "Show this vacant", vacant %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New vacant", new_vacant_path %>
+
+
